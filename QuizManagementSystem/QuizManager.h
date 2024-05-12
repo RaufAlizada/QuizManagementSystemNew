@@ -21,18 +21,20 @@ public:
 
 	bool changeQuizName(const string& oldName, const string& newName);
 
-	bool changeQuestions(int quizIndex, int questionIndex, const std::string& newQuestionText);
+	//bool changeQuestions(int quizIndex, int questionIndex, const std::string& newQuestionText);
 
-	bool changeAnswers(int quizIndex, int questionIndex, const std::vector<std::string>& newOptions);
+	//bool changeAnswers(int quizIndex, int questionIndex, const std::vector<std::string>& newOptions);
 
-	bool changeTrueAnswer(int quizIndex, int questionIndex, char newCorrectAnswer);
+	//bool changeTrueAnswer(int quizIndex, int questionIndex, char newCorrectAnswer);
 
 	vector<string> getQuizNames() const;
 	vector<string> getQuestionTexts(int quizIndex) const;
 
 	std::vector<Quiz> getQuizzes() const { return quizzes; }
 
-	void ChangeQuizQuestions(QuizManager& quizManager);
-	void ChangeQuizQuestionsAnswers(QuizManager& quizManager);
-	void ChangeQuizQuestionsTrueAnswers(QuizManager& quizManager);
+	//void ChangeQuizQuestions(QuizManager& quizManager);
+	//void ChangeQuizQuestionsAnswers(QuizManager& quizManager);
+	//void ChangeQuizQuestionsTrueAnswers(QuizManager& quizManager);
+
+	Quiz getQuiz(int index) const;
 };

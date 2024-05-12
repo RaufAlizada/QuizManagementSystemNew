@@ -9,7 +9,8 @@
 #include "Question.h"
 #include "Quiz.h"
 #include "QuizManager.h"
-#include "OwnException.h"
+//#include "OwnException.h"
+#include "Student.h"
 
 //#include "LoadingScreen.h"
 
@@ -278,8 +279,12 @@ int main() {
                         currentOption1 = (currentOption1 + 1 > 4) ? 1 : currentOption1 + 1;
                     }
                     else if (key1 == 13) {
-                        system("pause");
-                        break;
+                        if (currentOption1 == 1) {
+                            //startQuiz(quizManager);
+                        }
+                        else if (currentOption1 == 4) {
+                            break;
+                        }
                     }
                 }
             }
@@ -417,57 +422,57 @@ void ChangeQuizName(QuizManager& quizManager) {
     }
 }
 
-void ChangeTrueAnswer(QuizManager& quizManager) {
-    system("cls");
-    cout << "Available quizzes:\n";
-    vector<string> quizNames = quizManager.getQuizNames();
-
-    // Quiz seçimi
-    int quizChoice;
-    do {
-        cout << "Enter the number of the quiz to change its true answer (or 0 to go back): ";
-        cin >> quizChoice;
-        cin.ignore();
-        if (quizChoice < 0 || quizChoice > quizNames.size()) {
-            cout << "Invalid choice. Please enter a number between 0 and " << quizNames.size() << ".\n";
-        }
-    } while (quizChoice < 0 || quizChoice > quizNames.size());
-
-    if (quizChoice == 0) return; // Geri dön
-
-    // Soru seçimi
-    vector<string> questionTexts = quizManager.getQuestionTexts(quizChoice - 1);
-    system("cls");
-    cout << "Available questions for quiz " << quizNames[quizChoice - 1] << ":\n";
-    for (int i = 0; i < questionTexts.size(); ++i) {
-        cout << i + 1 << ". " << questionTexts[i] << endl;
-    }
-
-    int questionChoice;
-    do {
-        cout << "Enter the number of the question to change its true answer (or 0 to go back): ";
-        cin >> questionChoice;
-        cin.ignore();
-        if (questionChoice < 0 || questionChoice > questionTexts.size()) {
-            cout << "Invalid choice. Please enter a number between 0 and " << questionTexts.size() << ".\n";
-        }
-    } while (questionChoice < 0 || questionChoice > questionTexts.size());
-
-    if (questionChoice == 0) return; // Geri dön
-
-    char newCorrectAnswer;
-    cout << "Enter the new correct answer for the question (A, B, C, or D): ";
-    cin >> newCorrectAnswer;
-    cin.ignore();
-
-    if (quizManager.changeTrueAnswer(quizChoice - 1, questionChoice - 1, newCorrectAnswer)) {
-        cout << "Question true answer changed successfully.\n";
-        quizManager.saveQuizzes();
-    }
-    else {
-        cout << "Failed to change question true answer.\n";
-    }
-}
+//void ChangeTrueAnswer(QuizManager& quizManager) {
+//    system("cls");
+//    cout << "Available quizzes:\n";
+//    vector<string> quizNames = quizManager.getQuizNames();
+//
+//    // Quiz seçimi
+//    int quizChoice;
+//    do {
+//        cout << "Enter the number of the quiz to change its true answer (or 0 to go back): ";
+//        cin >> quizChoice;
+//        cin.ignore();
+//        if (quizChoice < 0 || quizChoice > quizNames.size()) {
+//            cout << "Invalid choice. Please enter a number between 0 and " << quizNames.size() << ".\n";
+//        }
+//    } while (quizChoice < 0 || quizChoice > quizNames.size());
+//
+//    if (quizChoice == 0) return; // Geri dön
+//
+//    // Soru seçimi
+//    vector<string> questionTexts = quizManager.getQuestionTexts(quizChoice - 1);
+//    system("cls");
+//    cout << "Available questions for quiz " << quizNames[quizChoice - 1] << ":\n";
+//    for (int i = 0; i < questionTexts.size(); ++i) {
+//        cout << i + 1 << ". " << questionTexts[i] << endl;
+//    }
+//
+//    int questionChoice;
+//    do {
+//        cout << "Enter the number of the question to change its true answer (or 0 to go back): ";
+//        cin >> questionChoice;
+//        cin.ignore();
+//        if (questionChoice < 0 || questionChoice > questionTexts.size()) {
+//            cout << "Invalid choice. Please enter a number between 0 and " << questionTexts.size() << ".\n";
+//        }
+//    } while (questionChoice < 0 || questionChoice > questionTexts.size());
+//
+//    if (questionChoice == 0) return; // Geri dön
+//
+//    char newCorrectAnswer;
+//    cout << "Enter the new correct answer for the question (A, B, C, or D): ";
+//    cin >> newCorrectAnswer;
+//    cin.ignore();
+//
+//    if (quizManager.changeTrueAnswer(quizChoice - 1, questionChoice - 1, newCorrectAnswer)) {
+//        cout << "Question true answer changed successfully.\n";
+//        quizManager.saveQuizzes();
+//    }
+//    else {
+//        cout << "Failed to change question true answer.\n";
+//    }
+//}
 
 
 // ======================================================================================================================================================================
